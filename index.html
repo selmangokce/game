@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<!--
+Who Wants to Be a Millionaire Quiz Game Markup
+Intended to Play a Single Game.
+WWBAM materials used under fair use for academic/scholar use, should not be
+distributed otherwise.
+
+Author: Aaron Nech
+-->
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<link href="http://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" type="text/css" href="css/style.css" />
+	</head>
+	<body>
+		<!-- Persistent gradient background for intro screens -->
+		<div id="intro-gradient-bg">
+			<!-- Transition screen -->
+			<div id="transition-screen">
+				<div class="transition-content">
+					<div class="transition-text">Selman Gökçe ile<br>1 Sene Nasıl Da<br>Geçti'ye hoşgeldiniz!</div>
+					<img class="transition-host" src="img/host-welcome.png" alt="Host" />
+				</div>
+			</div>
+		</div>
+		<!-- Before the game begins problem set selection -->
+		<div id="pre-start">
+			<img id="logo-image" src="img/logo.png" alt="Logo" />
+		</div>
+		<!-- Welcome overlay (always on top) -->
+		<div id="welcome-overlay">
+			<div class="welcome-text">
+				<div class="welcome-line1">Hoşgeldiniz Naz Hanım.</div>
+				<div class="welcome-line2">Hazırsanız başlayalım mı?</div>
+				<button id="welcome-btn">Hazırım.</button>
+			</div>
+		</div>
+
+		<!-- HTML5 Audio tags - weakly supported, works in Chrome(tested) -->
+		<audio id="background" src='sound/background.mp3'></audio>
+		<audio id="rightsound" src='sound/right.mp3'></audio>
+		<audio id="wrongsound" src='sound/wrong.mp3'></audio>
+		<!-- Intro audio -->
+		<audio id="intro-audio" src="sound/intro.mp3"></audio>
+
+		<!-- Shown when the player wins/loses -->
+		<div id="game-over">
+		</div>
+
+		<!-- The actual game markup -->
+		<div id="game">
+			<div id="main-content">
+				<div id="question-top-bar">
+					<div id="timer"></div>
+					<div id="options">
+						<div id="fifty" class="options-button" data-bind="click: fifty"></div>
+						<div id="phone-friend" class="options-button" data-bind="click: fadeOutOption"></div>
+						<div id="audience" class="options-button" data-bind="click: fadeOutOption"></div>
+					</div>
+					<img id="host-sitting" src="img/host-sitting.png" alt="Host" />
+				</div>
+				<div id="question-box">
+					<span class="content" data-bind="text: getQuestionText()"></span>
+				</div>
+				<div id="answer-box">
+					<div id="answer-one" class="answer" data-bind="click: function() { answerQuestion(0, $element.id) }">
+						<span class="big-text">A.</span><span data-bind="text: getAnswerText(0)"></span>
+					</div>
+					<div id="answer-two" class="answer" data-bind="click: function() { answerQuestion(1, $element.id) }">
+						<span class="big-text">B.</span><span data-bind="text: getAnswerText(1)"></span>
+					</div>
+					<div id="answer-three" class="answer" data-bind="click: function() { answerQuestion(2, $element.id) }">
+						<span class="big-text">C.</span><span data-bind="text: getAnswerText(2)"></span>
+					</div>
+					<div id="answer-four" class="answer" data-bind="click: function() { answerQuestion(3, $element.id) }">
+						<span class="big-text">D.</span><span data-bind="text: getAnswerText(3)"></span>
+					</div>
+				</div>
+			</div>
+			<ul id="levels">
+				<li data-bind="css: {active: level() == 15}" data-amt="1000000" data-lvl="15">$1,000,000</li>
+				<li data-bind="css: {active: level() == 14}" data-amt="500000" data-lvl="14">$500,000</li>
+				<li data-bind="css: {active: level() == 13}" data-amt="250000" data-lvl="13">$250,000</li>
+				<li data-bind="css: {active: level() == 12}" data-amt="125000" data-lvl="12">$125,000</li>
+				<li data-bind="css: {active: level() == 11}" data-amt="64000" data-lvl="11">$64,000</li>
+				<li data-bind="css: {active: level() == 10}" data-amt="32000" data-lvl="10">$32,000</li>
+				<li data-bind="css: {active: level() == 9}" data-amt="16000" data-lvl="9">$16,000</li>
+				<li data-bind="css: {active: level() == 8}" data-amt="8000" data-lvl="8">$8,000</li>
+				<li data-bind="css: {active: level() == 7}" data-amt="4000" data-lvl="7">$4,000</li>
+				<li data-bind="css: {active: level() == 6}" data-amt="2000" data-lvl="6">$2,000</li>
+				<li data-bind="css: {active: level() == 5}" data-amt="1000" data-lvl="5">$1,000</li>
+				<li data-bind="css: {active: level() == 4}" data-amt="500" data-lvl="4">$500</li>
+				<li data-bind="css: {active: level() == 3}" data-amt="300" data-lvl="3">$300</li>
+				<li data-bind="css: {active: level() == 2}" data-amt="200" data-lvl="2">$200</li>
+				<li data-bind="css: {active: level() == 1}" data-amt="100" data-lvl="1">$100</li>
+			</ul>
+		</div>
+
+		<!-- Script inclusion: JQuery for effects, Knockout for MVVM, millionaire.js for application -->
+		<script type="text/javascript" src="js/jquery-2.0.3.min.js"></script>
+		<script type="text/javascript" src="js/knockout-3.0.0.js"></script>
+		<script type="text/javascript" src="js/millionaire.js"></script>
+		<script type="text/javascript">
+		$(document).ready(function() {
+			$('#pre-start').hide();
+			$('#transition-screen').hide();
+			$('#welcome-overlay').show();
+			$('#intro-gradient-bg').show();
+
+			$('#welcome-btn').on('click', function() {
+				// Play intro audio
+				const introAudio = document.getElementById('intro-audio');
+				introAudio.currentTime = 0;
+				introAudio.play();
+
+				// Animate welcome text/button up
+				$('.welcome-text').addClass('slide-up');
+				$('#pre-start').hide(); // Ensure logo is hidden
+
+				// Immediately hide and remove the overlay
+				$('#welcome-overlay').hide().remove();
+
+				// After 1s, show transition screen
+				setTimeout(function() {
+					$('#transition-screen').show();
+					$('.transition-content').addClass('slide-in');
+					// After 12s, slide up transition screen
+					setTimeout(function() {
+						$('.transition-content').removeClass('slide-in').addClass('slide-up');
+						// After 2s, hide transition and show logo
+						setTimeout(function() {
+							$('#transition-screen').fadeOut(400, function() {
+								$('#pre-start').fadeIn(600, function() {
+									$('#intro-gradient-bg').fadeOut(600);
+								});
+							});
+						}, 2000);
+					}, 12000);
+				}, 1000);
+			});
+		});
+		</script>
+	</body>
+</html>

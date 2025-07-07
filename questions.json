@@ -1,0 +1,77 @@
+[
+	{
+		"question": "Selman ve Naz, beraber ilk nerede yemek yemişlerdir?",
+		"content": ["Kaşık-La", "Big Chefs", "Mado", "Popeyes"],
+		"correct": 2
+	},
+	{
+		"question": "Burger King'in üstündeki terasta Naz'la kaynaşan kız çocuğu, Selman'a ne ikram etmiştir?",
+		"content": ["Papyonlu Böcek", "Bira", "Peri Bacası", "Havuç"],
+		"correct": 2
+	},
+	{
+		"question": "Selman ve Naz, aşağıdakilerden hangisinin performansını izlememiştir?",
+		"content": ["Cem Adrian", "Hayko Cepkin", "Selçuk Yöntem", "Ogün"],
+		"correct": 1
+	},
+	{
+		"question": "Selman, Naz'ı telefonuna ilk ne diye kaydetmiştir?",
+		"content": ["AşkımNaz", "Meleğimmm", "Karım", "SevgilimNaz"],
+		"correct": 3
+	},
+	{
+		"question": "Selman'ın en sevdiği yemek nedir?",
+		"content": ["Fırın makarna", "Hamburger", "Bamya", "Fırında Tavuk Baget"],
+		"correct": 0
+	},
+	{
+		"question": "Selman ve Naz, aşağıdaki araba modellerinden hangisini kullanmamıştır?",
+		"content": ["Fiat Egea Cross", "Renault Megane", "Citröen C4X", "Ford Puma"],
+		"correct": 0
+	},
+	{
+		"question": "Fotoğraf nerede çekilmiştir?",
+		"content": ["Watergarden", "Beşiktaş", "Vadistanbul", "Zorlu"],
+		"correct": 1
+	},
+	{
+		"question": "İlk buluşmada Selman, Naz'ın hazırlanmasını kaç saat beklemiştir?",
+		"content": ["1 Saat", "2 Saat", "4 Saat", "30 Dakika"],
+		"correct": 1
+	},
+	{
+		"question": "Fotoğrafta Selman'ın sarılarak uyuduğu peluşun ismi nedir?",
+		"content": ["ÇilekNaz", "Domates", "KuçukNaz", "BabyNaz"],
+		"correct": 0
+	},
+	{
+		"question": "Selman ve Naz'ın beraber izledikleri ilk filmin adı nedir?",
+		"content": ["Aşk Tesadüfleri Sever", "Scent of a Woman", "Lost in Translation", "Up!"],
+		"correct": 1
+	},
+	{
+		"question": "Selman ve Naz'ın hayal dünyalarında ürettiği ve Naz'ın tavşan olduğu uzun soluklu hikayede Selman, hangi hayvandır?",
+		"content": ["Ayı", "Kaplan", "Aslan", "Puma"],
+		"correct": 1
+	},
+	{
+		"question": "Selman'ın son buluşmada Big Chefs'de ve oyun öncesi Zorlu'da içtiği kokteylin adı nedir?",
+		"content": ["Long Island", "Whiskey Sour", "Churchill", "Lynchburg Lemonade"],
+		"correct": 1
+	},
+	{
+		"question": "Selman ve Naz'ın beraber ilk bira içtikleri gece Selman'ın içtiği biranın markası nedir?",
+		"content": ["Bomonti Filtresiz", "Miller", "Beck's", "Carlsberg"],
+		"correct": 1
+	},
+	{
+		"question": "Ürgüpte dar sokağa girdiğimizde çıkmamıza 'yardımcı' olan abi o sokakta ne iş yapıyordu?",
+		"content": ["Çimento", "Korkuluk", "Demir Kesim", "Sokak Taşı"],
+		"correct": 3
+	},
+	{
+		"question": "Selman, Naz'a uyumadan önce aşağıdakilerden hangisini anlatmamıştır?",
+		"content": ["Birinci Dünya Savaşı", "Karadelikler", "Nükleer Enerji", "İkinci Dünya Savaşı"],
+		"correct": 0
+	}
+]
